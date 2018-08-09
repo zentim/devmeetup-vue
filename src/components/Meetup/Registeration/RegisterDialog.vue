@@ -55,7 +55,7 @@
     computed: {
       userIsRegistered () {
         return this.$store.getters.user.registeredMeetups.findIndex(meetupId => {
-          return meetupId === this.meetupId
+          return meetupId.toString() === this.meetupId.toString()
         }) >= 0
       }
     },

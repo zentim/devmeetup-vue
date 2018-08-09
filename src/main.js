@@ -6,9 +6,10 @@ import router from './router'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import colors from 'vuetify/es5/util/colors'
+import axios from 'axios'
 import { store } from './store'
 import DateFilter from './filter/date'
-import * as firebase from 'firebase'
+// import * as firebase from 'firebase'
 import AlertCmp from './components/Shared/Alert'
 import EditMeetupDetailsDialog from './components/Meetup/Edit/EditMeetupDetailsDialog'
 import EditMeetupDateDialog from './components/Meetup/Edit/EditMeetupDateDialog'
@@ -16,6 +17,7 @@ import EditMeetupTimeDialog from './components/Meetup/Edit/EditMeetupTimeDialog'
 import RegisterDialog from './components/Meetup/Registeration/RegisterDialog'
 
 Vue.config.productionTip = false
+Vue.prototype.$http = axios
 
 Vue.use(Vuetify, {
   theme: {
@@ -42,20 +44,20 @@ new Vue({
   components: { App },
   template: '<App/>',
   created () {
-    firebase.initializeApp({
-      apiKey: 'AIzaSyAvhb90sZjVlPQ3ygFaQgzm-716T0gOCFU',
-      authDomain: 'devmeetup-77e79.firebaseapp.com',
-      databaseURL: 'https://devmeetup-77e79.firebaseio.com',
-      projectId: 'devmeetup-77e79',
-      storageBucket: 'devmeetup-77e79.appspot.com'
-    })
+    // firebase.initializeApp({
+    //   apiKey: 'AIzaSyAvhb90sZjVlPQ3ygFaQgzm-716T0gOCFU',
+    //   authDomain: 'devmeetup-77e79.firebaseapp.com',
+    //   databaseURL: 'https://devmeetup-77e79.firebaseio.com',
+    //   projectId: 'devmeetup-77e79',
+    //   storageBucket: 'devmeetup-77e79.appspot.com'
+    // })
 
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        this.$store.dispatch('autoSignIn', user)
-        this.$store.dispatch('fetchUserData')
-      }
-    })
+    // firebase.auth().onAuthStateChanged(user => {
+    //   if (user) {
+    //     this.$store.dispatch('autoSignIn', user)
+    //     this.$store.dispatch('fetchUserData')
+    //   }
+    // })
 
     this.$store.dispatch('loadMeetups')
   }

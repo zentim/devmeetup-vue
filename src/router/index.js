@@ -8,6 +8,7 @@ import Signup from '@/components/User/Signup'
 import Signin from '@/components/User/Signin'
 import Meetup from '@/components/Meetup/Meetup'
 import AuthGuard from './auth-guard'
+import HelloWorld from '@/components/HelloWorld'
 
 Vue.use(Router)
 
@@ -50,6 +51,11 @@ export default new Router({
       path: '/signin',
       name: 'Signin',
       component: Signin
+    },
+    {
+      path: '/helloworld',
+      name: 'HelloWorld',
+      component: HelloWorld
     }
   ],
   mode: 'history'
